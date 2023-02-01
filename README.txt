@@ -1,2 +1,0 @@
-# yygh_parent
-test
