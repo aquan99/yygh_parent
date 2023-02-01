@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/yygh_booking?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+  application:
+    name: service-booking
+server:
+  port: 8300
+
+logging:
+  config: classpath:log/logback.xml
+
+mybatis-plus:
+  mapper-locations:
+    - classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.wuwq.yygh.model
+
+yygh:
+  schedule:
+    expireCron: 0 59 20 * * ?

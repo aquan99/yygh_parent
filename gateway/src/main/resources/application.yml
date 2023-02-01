@@ -1,0 +1,30 @@
+server:
+  port: 80
+spring:
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true #使用服务发现路由
+      routes:
+        - id: service-hosp
+          uri: lb://service-hosp
+          predicates:
+            - Path=/hosp/**
+        - id: service-admin
+          uri: lb://service-admin
+          predicates:
+            - Path=/admin/**
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/user/**
+        - id: service-booking
+          uri: lb://service-booking
+          predicates:
+            - Path=/booking/**
+  application:
+    name: service-gateway
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuwq.yygh.hosp.mapper.ScheduleMapper">
+
+    <resultMap id="scheduleDay" type="com.wuwq.yygh.vo.hosp.ScheduleDay">
+        <result column="doctorId" property="doctorId"></result>
+        <result column="workDate" property="workDate"></result>
+        <result column="scheduleNumDay" property="scheduleNumDay"></result>
+        <result column="bookingCountDay" property="bookingCountDay"></result>
+    </resultMap>
+
+    <select id="getScheduleDay" resultMap="scheduleDay">
+        select
+            s.doctorId doctorId,
+            s.workDate workDate,
+            sum(s.scheduleNum) scheduleNumDay,
+            sum(s.bookingCount) bookingCountDay
+        from schedule s
+        where
+            s.doctorId in
+            <foreach collection="doctorIdList" open="(" separator="," close=")" item="item">
+                #{item}
+            </foreach>
+            <if test="workDate!=null">
+                and s.workDate = #{workDate}
+            </if>
+        group by s.doctorId,s.workDate
+        order by s.workDate asc
+    </select>
+
+
+</mapper>
