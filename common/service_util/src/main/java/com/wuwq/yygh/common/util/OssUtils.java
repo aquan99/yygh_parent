@@ -21,11 +21,11 @@ import java.util.UUID;
 public class OssUtils {
 
 
-    private static final String ENDPOINT = "oss-cn-chengdu.aliyuncs.com";
-    private static final String ACCESSKEYID = "LTAI5tHAtAaYzVpXCdQUDK24";
-    private static final String ACCESSKEYSECRET = "Yh8Oh2fW0fxulW0mpGIy2FgzZoz8Bt";
-    private static final String BUKETNAME = "muyu-storage";
-    private static final String FOLDER = "yygh/doctorPhoto/";
+    private static final String ENDPOINT = "";
+    private static final String ACCESSKEYID = "";
+    private static final String ACCESSKEYSECRET = "";
+    private static final String BUKETNAME = "";
+    private static final String FOLDER = "";
 
 
 
